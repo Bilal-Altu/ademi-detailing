@@ -102,8 +102,7 @@
   .hero h1 { max-width: 15ch; }
   .hero h1 .ort { display: block; font-size: clamp(24px, 2.4vw, 40px); font-weight: 700; color: var(--hell); }
   .hero h1 .gross { display: block; margin-top: .12em; font-size: clamp(52px, 7.2vw, 124px); font-weight: 900; line-height: .92; color: var(--gruen-hell); letter-spacing: -.03em; }
-  .hero .lead { margin: 26px 0 34px; max-width: 27em; font-size: clamp(18px, 1.35vw, 21px); color: #C5CBC8; }
-  .hero .aktionen { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+  .hero .aktionen { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: clamp(36px, 4.5vh, 52px); }
   .hero .aktionen .anruf { color: var(--hell); font-weight: 700; font-size: 20px; text-decoration: none; padding: 10px 0; border-bottom: 2px solid var(--metall); }
   .linie-gross { position: absolute; z-index: 0; left: 52%; top: 50%; width: min(64vw, 1180px); transform: translateY(-50%); pointer-events: none; }
   .linie-gross path { fill: none; stroke-linecap: round; }
@@ -253,7 +252,7 @@
     .kopf .tel, .kopf nav { display: none; }
     .hero { min-height: 100svh; }
     .hero .huelle { justify-content: flex-start; padding-top: 104px; padding-bottom: 34svh; }
-    .hero .lead { font-size: 17px; margin: 18px 0 24px; }
+    .hero .aktionen { margin-top: 28px; }
     .hero .aktionen .anruf { display: none; }
     .linie-gross { top: auto; bottom: 8px; transform: none; width: 125vw; left: -8vw; opacity: .7; }
     .hero-video video, .hero-video img { object-position: 50% 100%; }
@@ -318,7 +317,6 @@
     <div class="huelle">
       <div class="hero-text">
       <h1><span class="ort">Fahrzeugaufbereitung in Reutlingen</span><span class="gross">zum Festpreis.</span></h1>
-      <p class="lead">Klicken Sie sich durch: Fahrzeug wählen, Leistungen aussuchen, Preis sehen. Was dazukommt, besprechen wir vorher mit Ihnen.</p>
       <div class="aktionen">
         <a class="knopf gruen" href="#rechner">Preis berechnen <span class="pfeil" aria-hidden="true">→</span></a>
         <a class="anruf" href="tel:+4917661504130">0176 615 041 30</a>
@@ -331,7 +329,7 @@
     <div class="huelle">
       <div class="kopfzeile">
         <h2>Ihr Preis in wenigen Klicks</h2>
-        <p>Endpreise ohne Umsatzsteuer (§ 19 UStG). Die Anfrage kommt sofort bei uns an.</p>
+        <p>Fahrzeug wählen, Leistungen aussuchen, Preis sehen. Endpreise ohne Umsatzsteuer (§ 19 UStG), die Anfrage kommt sofort bei uns an.</p>
       </div>
       <noscript><p><strong>Der Preis-Rechner braucht JavaScript.</strong> Rufen Sie uns einfach an: <a href="tel:+4917661504130">0176 615 041 30</a>.</p></noscript>
 
