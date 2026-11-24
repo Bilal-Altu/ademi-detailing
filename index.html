@@ -133,15 +133,27 @@
   .fortschritt span.jetzt { background: var(--nacht); }
   .schrittzahl { font-size: 15px; font-weight: 600; color: var(--grau); margin: 0 0 6px; }
   .frage { font-size: clamp(26px, 2.4vw, 38px); margin: 0 0 26px; }
-  .schritt { display: none; flex: 1; flex-direction: column; animation: rein .35s ease both; }
+  .schritt { display: none; flex: 1; flex-direction: column; animation: reinRechts .55s cubic-bezier(.22,.8,.24,1) both; }
   .schritt.aktiv { display: flex; }
-  @keyframes rein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .buehne[data-richtung="zurueck"] .schritt { animation-name: reinLinks; }
+  @keyframes reinRechts { from { opacity: 0; transform: translateX(36px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+  @keyframes reinLinks { from { opacity: 0; transform: translateX(-36px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+  /* Glanz-Streifen wie eine Reflexion auf frisch poliertem Lack: läuft einmal von links nach rechts */
+  @keyframes glanz { from { transform: translateX(-120%) skewX(-18deg); } to { transform: translateX(160%) skewX(-18deg); } }
+  @keyframes glanzText { from { background-position: 120% 0; } to { background-position: -40% 0; } }
   .kacheln { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .kacheln.zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kachel {
     position: relative; display: grid; gap: 4px; align-content: start; min-height: 112px; padding: 20px 20px 18px; border-radius: 12px; cursor: pointer;
-    background: var(--hell); border: 2px solid transparent; text-align: left; font: inherit; color: inherit; transition: border-color .15s, background .15s, transform .15s;
+    background: var(--hell); border: 2px solid transparent; text-align: left; font: inherit; color: inherit; overflow: hidden;
+    transition: border-color .3s ease, background-color .45s ease, transform .25s ease, box-shadow .3s ease;
   }
+  .kachel::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 60%; pointer-events: none; transform: translateX(-120%) skewX(-18deg);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.85) 45%, rgba(92,203,128,.35) 60%, transparent);
+  }
+  .kachel:has(input:checked)::before { animation: glanz .9s cubic-bezier(.3,.6,.2,1) both; }
+  .kachel:has(input:checked) { box-shadow: 0 10px 24px -16px rgba(21,122,55,.6); }
   .kachel:hover { border-color: var(--nacht); transform: translateY(-2px); }
   .kachel input { position: absolute; opacity: 0; pointer-events: none; }
   .kachel .name { font-weight: 800; font-stretch: 115%; font-size: 20px; line-height: 1.2; }
@@ -170,6 +182,10 @@
   .preisseite .summe { margin-top: auto; padding-top: 26px; }
   .preisseite .summe span { display: block; font-size: 15px; color: var(--grau-hell); }
   .preisseite .summe strong { display: block; font-size: clamp(48px, 4.4vw, 68px); font-weight: 900; font-stretch: 125%; letter-spacing: -.03em; line-height: 1.05; color: var(--gruen-hell); }
+  .preisseite .summe strong.glanz {
+    background: linear-gradient(100deg, var(--gruen-hell) 35%, #F4FFF7 50%, var(--gruen-hell) 65%) 120% 0 / 260% 100% no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent; animation: glanzText 1s cubic-bezier(.3,.6,.2,1) both;
+  }
   .preisseite .hinweis { font-size: 14px; color: var(--grau-hell); margin: 12px 0 0; }
   .linie-klein { width: 150px; margin: 0 0 18px; }
   .linie-klein path { fill: none; stroke-linecap: round; }
@@ -277,6 +293,8 @@
     html { scroll-behavior: auto; }
     .zeichnen path { animation: none; stroke-dashoffset: 0; }
     .schritt { animation: none; }
+    .kachel:has(input:checked)::before, .preisseite .summe strong.glanz { animation: none; }
+    .kachel::before { display: none; }
   }
 </style>
 </head>
@@ -534,8 +552,9 @@
   let aktuell = "klasse";
 
   function zeigeSchritt(id, fokus) {
-    aktuell = id;
     const liste = schritte(), i = liste.indexOf(id);
+    if (id !== aktuell) form.dataset.richtung = i < liste.indexOf(aktuell) ? "zurueck" : "vor";
+    aktuell = id;
     document.querySelectorAll(".schritt").forEach(s => s.classList.toggle("aktiv", s.dataset.schritt === id));
     document.getElementById("fortschritt").innerHTML = liste.map((_, j) => `<span class="${j < i ? "fertig" : j === i ? "jetzt" : ""}"></span>`).join("");
     document.getElementById("schrittzahl").textContent = `Schritt ${i + 1} von ${liste.length}`;
@@ -583,7 +602,11 @@
     document.getElementById("zPosten").innerHTML = zeilen.length
       ? zeilen.map(([t, p]) => `<li><span>${t}</span><span>${eur(p)}</span></li>`).join("")
       : `<li class="leer">Wählen Sie links Schritt für Schritt aus.</li>`;
-    document.getElementById("zSumme").textContent = eur(summe);
+    const summeEl = document.getElementById("zSumme");
+    if (summeEl.textContent !== eur(summe) && summe > 0) {
+      summeEl.classList.remove("glanz"); void summeEl.offsetWidth; summeEl.classList.add("glanz");
+    }
+    summeEl.textContent = eur(summe);
     const leiste = document.getElementById("leistePreis");
     leiste.hidden = !zeilen.length; leiste.textContent = eur(summe);
     form.auswahl.value = zeilen.length ? `${name(klasse)} · ${leistung}: ` + zeilen.map(([t, p]) => `${t} ${eur(p)}`).join(" | ") : "";
