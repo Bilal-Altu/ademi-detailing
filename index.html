@@ -245,21 +245,20 @@
     .linie-gross { width: 110vw; left: 30%; opacity: .45; }
   }
   @media (max-width: 720px) {
-    body { font-size: 18px; padding-bottom: 82px; }
-    .kopf .huelle { flex-wrap: wrap; gap: 6px 16px; padding-top: 14px; padding-bottom: 4px; }
+    body { font-size: 18px; padding-bottom: 84px; }
+    /* Handy: nur Logo oben – kein Menü, keine Linie (Bilal: „zu überladen“) */
+    .kopf .huelle { padding-top: 16px; padding-bottom: 0; }
+    .kopf .huelle::after { display: none; }
     .kopf .logo img { width: 150px; }
-    .kopf .tel { display: none; }
-    .kopf nav { order: 3; width: 100%; margin: 0; justify-content: space-between; gap: 4px; }
-    .kopf nav a { padding: 14px 0; min-height: 44px; font-size: 12.5px; font-stretch: 100%; letter-spacing: .03em; white-space: nowrap; border-radius: 0; }
-    .kopf nav a:hover { background: none; }
+    .kopf .tel, .kopf nav { display: none; }
     .hero { min-height: 100svh; }
-    .hero .huelle { justify-content: flex-start; padding-top: 150px; padding-bottom: 28svh; }
+    .hero .huelle { justify-content: flex-start; padding-top: 104px; padding-bottom: 34svh; }
     .hero .lead { font-size: 17px; margin: 18px 0 24px; }
     .hero .aktionen .anruf { display: none; }
     .linie-gross { top: auto; bottom: 8px; transform: none; width: 125vw; left: -8vw; opacity: .7; }
     .hero-video video, .hero-video img { object-position: 50% 100%; }
     .hero-video::after { background: linear-gradient(180deg, rgba(16,19,21,.9) 0%, rgba(16,19,21,.72) 48%, rgba(16,19,21,.1) 72%, rgba(16,19,21,0) 100%); }
-    .ki-marke { bottom: 96px; }
+    .ki-marke { bottom: 92px; }
     .kacheln, .kacheln.zwei { grid-template-columns: 1fr; }
     .kachel { min-height: 0; padding: 16px 52px 16px 16px; }
     .schritt-bereich { min-height: 0; }
@@ -267,12 +266,13 @@
     .kontakt dl { grid-template-columns: 1fr; gap: 2px; }
     .kontakt dd { margin-bottom: 14px; }
     .fussleiste .rechts { margin-left: 0; }
+    /* Anruf-Knopf schwebt frei, ohne schwarzen Balken dahinter */
     .leiste {
       display: grid; grid-template-columns: 1fr auto; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-      padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--nacht);
+      padding: 0 14px calc(14px + env(safe-area-inset-bottom)); background: none; pointer-events: none;
     }
-    .leiste .knopf { min-height: 54px; }
-    .leiste .preis-knopf { color: var(--gruen-hell); border-color: #3A4144; padding: 0 18px; }
+    .leiste .knopf { min-height: 56px; pointer-events: auto; box-shadow: 0 10px 28px -8px rgba(0,0,0,.55); }
+    .leiste .preis-knopf { background: var(--nacht); color: var(--gruen-hell); border-color: #3A4144; padding: 0 18px; }
     .leiste .preis-knopf[hidden] { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
