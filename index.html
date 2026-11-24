@@ -245,13 +245,12 @@
   }
   @media (max-width: 720px) {
     body { font-size: 18px; padding-bottom: 84px; }
-    /* Handy: nur Logo oben – kein Menü, keine Linie (Bilal: „zu überladen“) */
-    .kopf .huelle { padding-top: 16px; padding-bottom: 0; }
-    .kopf .huelle::after { display: none; }
+    /* Handy: nur Logo + Trennlinie oben, kein Menü (Bilal: „zu überladen“) */
+    .kopf .huelle { padding-top: 16px; padding-bottom: 16px; }
     .kopf .logo img { width: 150px; }
     .kopf .tel, .kopf nav { display: none; }
     .hero { min-height: 100svh; }
-    .hero .huelle { justify-content: flex-start; padding-top: 104px; padding-bottom: 34svh; }
+    .hero .huelle { justify-content: flex-start; padding-top: 128px; padding-bottom: 34svh; }
     .hero .aktionen { margin-top: 28px; }
     .hero .aktionen .anruf { display: none; }
     .linie-gross { top: auto; bottom: 8px; transform: none; width: 125vw; left: -8vw; opacity: .7; }
