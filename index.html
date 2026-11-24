@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fahrzeugaufbereitung in Reutlingen zum Festpreis – Ademi Detailing</title>
+<meta name="description" content="Fahrzeugaufbereitung in Reutlingen: Innenreinigung, Politur, WAX- und Keramik-Versiegelung, Leasing-Rückgabe. In wenigen Klicks zum Festpreis.">
+<!--
+  ENTWURF (sideTwo) – nur Startseite. Fassung 3 (2026-11-24):
+  - Fassung 1 Kassenbon „schreit nach AI“, Fassung 2 „wie eine Behörde“ + „warum alle Preise sehen“ (Bilal).
+  - Jetzt: Mona Sans breit (Logo-Anmutung), Fahrzeuglinie aus dem Logo als Signatur, Rechner Schritt für Schritt, keine Preisliste.
+  Preise: _material/konfigurator-alt/preise.json (noch nicht vom Kunden bestätigt). Scheibenversiegelung fehlt bewusst (stand auf 0 €).
+-->
+<link rel="preload" href="schrift/mona-sans.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "name": "Ademi Detailing",
+  "description": "Fahrzeugaufbereitung mit Festpreisen nach Fahrzeugklasse",
+  "url": "https://ademidetailing.de/",
+  "telephone": "+49 176 61504130",
+  "email": "info@ademidetailing.de",
+  "address": { "@type": "PostalAddress", "streetAddress": "Olgastraße 49", "postalCode": "72770", "addressLocality": "Reutlingen", "addressCountry": "DE" },
+  "areaServed": "Reutlingen",
+  "sameAs": ["https://www.instagram.com/ademidetailing/", "https://www.tiktok.com/@ademi.detailing", "https://www.facebook.com/detailing.ademi/"]
+}
+</script>
+<style>
+  @font-face { font-family: "Mona Sans"; src: url("schrift/mona-sans.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; }
+
+  :root {
+    --nacht: #101315;
+    --nacht-2: #181C1F;
+    --nacht-3: #22272A;
+    --hell: #EDEFEC;
+    --karte: #F7F8F6;
+    --grau: #545B59;
+    --grau-hell: #A3AAA7;
+    --linie: #D2D7D4;
+    --gruen: #157A37;
+    --gruen-hover: #0F652C;
+    --gruen-hell: #5CCB80;
+    --metall: #8F9793;
+    --schrift: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+    --rand: clamp(20px, 4vw, 56px);
+    --breit: 1640px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--hell); color: var(--nacht); font: 400 19px/1.55 var(--schrift); }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+  .huelle { max-width: var(--breit); margin: 0 auto; padding: 0 var(--rand); }
+  h1, h2, h3 { margin: 0; font-weight: 800; font-stretch: 125%; letter-spacing: -.015em; line-height: 1.02; }
+  h2 { font-size: clamp(32px, 3.6vw, 56px); }
+  p { margin: 0 0 1em; }
+
+  .knopf {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 58px; padding: 0 30px;
+    border-radius: 999px; border: 2px solid currentColor; background: transparent; color: inherit;
+    font: 700 18px/1 var(--schrift); font-stretch: 110%; text-decoration: none; cursor: pointer;
+  }
+  .knopf.gruen { background: var(--gruen); border-color: var(--gruen); color: #F5F7F4; }
+  .knopf.gruen:hover { background: var(--gruen-hover); border-color: var(--gruen-hover); }
+  .knopf .pfeil { transition: transform .2s; }
+  .knopf:hover .pfeil { transform: translateX(4px); }
+  :focus-visible { outline: 3px solid var(--gruen-hell); outline-offset: 3px; }
+
+  /* ---------- Kopf (dunkel) ---------- */
+  .kopf { background: var(--nacht); color: var(--hell); border-bottom: 1px solid #23282B; }
+  .kopf .huelle { display: flex; align-items: center; gap: 32px; min-height: 84px; }
+  .kopf .logo { display: block; padding: 4px 0; }
+  .kopf .logo img { height: 48px; width: auto; }
+  .kopf nav { display: flex; gap: 30px; margin-left: auto; }
+  .kopf nav a { text-decoration: none; font-weight: 600; font-size: 17px; padding: 10px 0; border-bottom: 2px solid transparent; }
+  .kopf nav a:hover { border-color: var(--gruen-hell); }
+  .kopf .tel { min-height: 48px; font-size: 17px; padding: 0 22px; }
+
+  /* ---------- Hero ---------- */
+  /* Kopf liegt transparent über dem Hero, das Logo steht groß im Hero */
+  /* Kopfleiste: Logo links als Anker, Navigation + Telefon rechts auf einer Achse, feine Linie über die Inhaltsbreite */
+  .kopf { position: absolute; top: 0; left: 0; right: 0; z-index: 5; background: linear-gradient(180deg, rgba(16,19,21,.7), rgba(16,19,21,0)); border-bottom: 0; }
+  .kopf .huelle { position: relative; min-height: 0; padding-top: 22px; padding-bottom: 22px; gap: 40px; }
+  .kopf .huelle::after { content: ""; position: absolute; left: var(--rand); right: var(--rand); bottom: 0; height: 1px; background: rgba(237,239,236,.18); }
+  .kopf .logo { padding: 0; }
+  .kopf .logo img { height: auto; width: clamp(190px, 15vw, 270px); }
+  .kopf nav { gap: 6px; }
+  .kopf nav a { font-size: 14px; font-weight: 700; font-stretch: 112%; letter-spacing: .08em; text-transform: uppercase; color: #D9DEDB; padding: 12px 16px; border-bottom: 0; border-radius: 999px; transition: background .15s, color .15s; }
+  .kopf nav a:hover { background: rgba(237,239,236,.1); color: #FFFFFF; }
+  .kopf .tel { min-height: 46px; font-size: 15px; letter-spacing: .03em; padding: 0 22px; margin-left: 10px; }
+  .hero { position: relative; overflow: hidden; background: var(--nacht); color: var(--hell); min-height: max(680px, min(100svh, 1000px)); display: flex; }
+  .hero .huelle { position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(150px, 17vh, 190px); padding-bottom: clamp(56px, 8vh, 100px); }
+  .hero h1 { max-width: 15ch; }
+  .hero h1 .ort { display: block; font-size: clamp(24px, 2.4vw, 40px); font-weight: 700; color: var(--hell); }
+  .hero h1 .gross { display: block; margin-top: .12em; font-size: clamp(52px, 7.2vw, 124px); font-weight: 900; line-height: .92; color: var(--gruen-hell); letter-spacing: -.03em; }
+  .hero .lead { margin: 26px 0 34px; max-width: 27em; font-size: clamp(18px, 1.35vw, 21px); color: #C5CBC8; }
+  .hero .aktionen { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+  .hero .aktionen .anruf { color: var(--hell); font-weight: 700; font-size: 20px; text-decoration: none; padding: 10px 0; border-bottom: 2px solid var(--metall); }
+  .linie-gross { position: absolute; z-index: 0; left: 52%; top: 50%; width: min(64vw, 1180px); transform: translateY(-50%); pointer-events: none; }
+  .linie-gross path { fill: none; stroke-linecap: round; }
+  .zeichnen path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: zeichnen 1.6s cubic-bezier(.6,.1,.2,1) forwards; }
+  .zeichnen path:nth-child(2) { animation-delay: .15s; } .zeichnen path:nth-child(3) { animation-delay: .3s; } .zeichnen path:nth-child(4) { animation-delay: .45s; }
+  @keyframes zeichnen { to { stroke-dashoffset: 0; } }
+
+  /* Hintergrundvideo (Kling, KI) – erscheint nur, wenn die Dateien in bilder/ liegen */
+  .hero-video { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity .8s ease; }
+  .hero-video.da { opacity: 1; }
+  .hero-video video, .hero-video img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .hero-video::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(16,19,21,.94) 0%, rgba(16,19,21,.82) 34%, rgba(16,19,21,.25) 66%, rgba(16,19,21,.35) 100%); }
+  .ki-marke { position: absolute; right: 16px; bottom: 14px; z-index: 2; padding: 4px 10px; border-radius: 999px;
+    background: rgba(16,19,21,.7); color: #D5DAD7; font-size: 13px; font-weight: 600; }
+  .hero.mit-video .linie-gross { display: none; }
+  .fuss-ki[hidden] { display: none; }
+
+  /* ---------- Rechner: Schritt für Schritt ---------- */
+  .rechner { background: var(--hell); padding: clamp(64px, 8vw, 112px) 0; }
+  .rechner .kopfzeile { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 40px; margin-bottom: 34px; }
+  .rechner .kopfzeile p { margin: 0; color: var(--grau); max-width: 30em; }
+  .buehne { display: grid; grid-template-columns: minmax(0, 1fr) 380px; background: var(--karte); border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px -40px rgba(16,19,21,.45); }
+  .schritt-bereich { padding: clamp(24px, 3.4vw, 52px); min-height: 520px; display: flex; flex-direction: column; }
+  .fortschritt { display: flex; gap: 6px; margin-bottom: 14px; }
+  .fortschritt span { flex: 1; height: 6px; border-radius: 3px; background: var(--linie); transition: background .3s; }
+  .fortschritt span.fertig { background: var(--gruen); }
+  .fortschritt span.jetzt { background: var(--nacht); }
+  .schrittzahl { font-size: 15px; font-weight: 600; color: var(--grau); margin: 0 0 6px; }
+  .frage { font-size: clamp(26px, 2.4vw, 38px); margin: 0 0 26px; }
+  .schritt { display: none; flex: 1; flex-direction: column; animation: rein .35s ease both; }
+  .schritt.aktiv { display: flex; }
+  @keyframes rein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .kacheln { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .kacheln.zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kachel {
+    position: relative; display: grid; gap: 4px; align-content: start; min-height: 112px; padding: 20px 20px 18px; border-radius: 12px; cursor: pointer;
+    background: var(--hell); border: 2px solid transparent; text-align: left; font: inherit; color: inherit; transition: border-color .15s, background .15s, transform .15s;
+  }
+  .kachel:hover { border-color: var(--nacht); transform: translateY(-2px); }
+  .kachel input { position: absolute; opacity: 0; pointer-events: none; }
+  .kachel .name { font-weight: 800; font-stretch: 115%; font-size: 20px; line-height: 1.2; }
+  .kachel .info { font-size: 15px; color: var(--grau); line-height: 1.4; }
+  .kachel .betrag { margin-top: 8px; font-weight: 800; font-size: 20px; color: var(--gruen); }
+  .kachel .haken { position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B9BFBC; display: grid; place-items: center; }
+  .kachel:has(input:checked) { border-color: var(--gruen); background: #E5F1E8; }
+  .kachel:has(input:checked) .haken { background: var(--gruen); border-color: var(--gruen); }
+  .kachel:has(input:checked) .haken::after { content: ""; width: 11px; height: 6px; border: solid #F5F7F4; border-width: 0 0 2.5px 2.5px; transform: rotate(-45deg) translate(1px, -1px); }
+  .kachel:has(input:focus-visible) { outline: 3px solid var(--gruen); outline-offset: 2px; }
+  .kachel.aus { opacity: .45; cursor: not-allowed; transform: none; border-color: transparent; }
+  .kachel.aus .info::after { content: " Nur mit der 3-stufigen Politur."; color: var(--nacht); font-weight: 700; }
+  .zusatz-titel { font-weight: 700; font-size: 18px; margin: 26px 0 12px; }
+  .navigation { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 30px; }
+  .navigation .zurueck { color: var(--nacht); border-color: var(--linie); }
+  .navigation .zurueck[hidden] { visibility: hidden; display: inline-flex; }
+  .navigation .weiter[hidden] { display: none; }
+
+  .preisseite { background: var(--nacht); color: var(--hell); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; }
+  .preisseite .titel { font-size: 15px; font-weight: 600; color: var(--grau-hell); margin: 0; }
+  .preisseite .fahrzeug { font-weight: 800; font-stretch: 115%; font-size: 21px; margin: 6px 0 20px; }
+  .preisseite ul { list-style: none; margin: 0; padding: 0; }
+  .preisseite li { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid #2C3235; font-size: 16px; }
+  .preisseite li span:last-child { white-space: nowrap; font-weight: 700; }
+  .preisseite li.leer { color: var(--grau-hell); border: 0; }
+  .preisseite .summe { margin-top: auto; padding-top: 26px; }
+  .preisseite .summe span { display: block; font-size: 15px; color: var(--grau-hell); }
+  .preisseite .summe strong { display: block; font-size: clamp(48px, 4.4vw, 68px); font-weight: 900; font-stretch: 125%; letter-spacing: -.03em; line-height: 1.05; color: var(--gruen-hell); }
+  .preisseite .hinweis { font-size: 14px; color: var(--grau-hell); margin: 12px 0 0; }
+  .linie-klein { width: 150px; margin: 0 0 18px; }
+  .linie-klein path { fill: none; stroke-linecap: round; }
+
+  .formular { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .formular .ganz { grid-column: 1 / -1; }
+  .formular label { display: grid; gap: 6px; font-weight: 600; font-size: 17px; }
+  .formular input, .formular textarea {
+    font: 400 18px/1.4 var(--schrift); color: var(--nacht); background: var(--hell);
+    border: 2px solid var(--linie); border-radius: 10px; padding: 13px 14px; min-height: 54px; width: 100%;
+  }
+  .formular input:focus, .formular textarea:focus { border-color: var(--nacht); outline: none; }
+  .formular textarea { min-height: 110px; resize: vertical; }
+  .formular .pflicht { color: var(--gruen); }
+  .formular .falle { position: absolute; left: -9999px; }
+  .meldung { grid-column: 1 / -1; margin: 0; padding: 14px 16px; border-radius: 10px; font-weight: 600; }
+  .meldung[hidden] { display: none; }
+  .meldung.ok { background: #DDEFE2; color: #0D4F22; }
+  .meldung.fehler { background: #F6E0DA; color: #7A2414; }
+
+  .ablauf { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 44px); margin: 48px 0 0; padding: 0; list-style: none; }
+  .ablauf li { display: grid; grid-template-columns: 46px 1fr; gap: 4px 16px; }
+  .ablauf b { grid-row: span 2; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--nacht); color: var(--gruen-hell); font-size: 19px; font-weight: 800; }
+  .ablauf strong { font-size: 20px; font-stretch: 115%; font-weight: 800; }
+  .ablauf span { color: var(--grau); font-size: 17px; }
+
+  /* ---------- Leasing: grüner Block ---------- */
+  .leasing { background: var(--gruen); color: #F3F6F3; padding: clamp(64px, 8vw, 112px) 0; position: relative; overflow: hidden; }
+  .leasing .huelle { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 110px); position: relative; z-index: 1; }
+  .leasing h2 { font-size: clamp(34px, 3.8vw, 60px); margin-bottom: 26px; }
+  .leasing p { color: #DCEBE0; max-width: 30em; }
+  .leasing .ehrlich { color: #FFFFFF; font-weight: 700; font-size: 22px; }
+  .leasing .knopf { margin-top: 10px; background: var(--nacht); border-color: var(--nacht); color: #F3F6F3; }
+  .leasing .knopf:hover { background: #000; }
+  .leasing ul { list-style: none; margin: 0; padding: 0; align-self: center; }
+  .leasing li { position: relative; padding: 16px 0 16px 40px; border-bottom: 1px solid rgba(255,255,255,.25); font-size: 20px; font-weight: 600; }
+  .leasing li::before { content: ""; position: absolute; left: 4px; top: 23px; width: 15px; height: 8px; border: solid #F3F6F3; border-width: 0 0 3px 3px; transform: rotate(-45deg); }
+
+  /* ---------- Social-Band ---------- */
+  .sozial { background: var(--nacht); color: var(--hell); padding: clamp(56px, 7vw, 96px) 0; }
+  .sozial .huelle { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: end; }
+  .sozial p { margin: 0 0 10px; color: var(--grau-hell); font-size: 20px; }
+  .sozial .handle { display: inline-block; font-size: clamp(36px, 6.4vw, 108px); font-weight: 900; font-stretch: 125%; letter-spacing: -.035em; line-height: 1; text-decoration: none; color: var(--hell); }
+  .sozial .handle span { color: var(--gruen-hell); }
+  .sozial .handle:hover { color: var(--gruen-hell); }
+  .sozial .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .sozial .links .knopf { min-height: 52px; padding: 0 22px; font-size: 17px; border-color: #3A4144; }
+
+  /* ---------- Kontakt ---------- */
+  .kontakt { padding: clamp(64px, 8vw, 104px) 0; }
+  .kontakt .huelle { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
+  .kontakt .gross { display: inline-block; margin-top: 22px; padding: 6px 0; font-size: clamp(32px, 3.4vw, 50px); font-weight: 900; font-stretch: 120%; letter-spacing: -.02em; text-decoration: none; border-bottom: 4px solid var(--gruen); }
+  .kontakt dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 14px 32px; font-size: 20px; }
+  .kontakt dt { font-weight: 800; font-stretch: 115%; }
+  .kontakt dd { margin: 0; }
+  .kontakt dd a { text-underline-offset: 4px; }
+
+  .fussleiste { background: var(--nacht); color: var(--grau-hell); padding: 28px 0 36px; font-size: 16px; }
+  .fussleiste .huelle { display: flex; flex-wrap: wrap; gap: 14px 32px; align-items: center; }
+  .fussleiste a { color: var(--hell); }
+  .fussleiste .rechts { margin-left: auto; }
+
+  .leiste { display: none; }
+
+  @media (max-width: 1060px) {
+    .buehne { grid-template-columns: minmax(0, 1fr); }
+    .navigation .knopf { padding: 0 20px; }
+    .preisseite .summe { margin-top: 18px; }
+    .kacheln { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .leasing .huelle, .kontakt .huelle, .sozial .huelle { grid-template-columns: 1fr; }
+    .ablauf { grid-template-columns: 1fr; }
+    .linie-gross { width: 110vw; left: 30%; opacity: .45; }
+  }
+  @media (max-width: 720px) {
+    body { font-size: 18px; padding-bottom: 82px; }
+    .kopf .huelle { flex-wrap: wrap; gap: 6px 16px; padding-top: 14px; padding-bottom: 4px; }
+    .kopf .logo img { width: 150px; }
+    .kopf .tel { display: none; }
+    .kopf nav { order: 3; width: 100%; margin: 0; justify-content: space-between; gap: 4px; }
+    .kopf nav a { padding: 14px 0; min-height: 44px; font-size: 12.5px; font-stretch: 100%; letter-spacing: .03em; white-space: nowrap; border-radius: 0; }
+    .kopf nav a:hover { background: none; }
+    .hero { min-height: 100svh; }
+    .hero .huelle { justify-content: flex-start; padding-top: 150px; padding-bottom: 28svh; }
+    .hero .lead { font-size: 17px; margin: 18px 0 24px; }
+    .hero .aktionen .anruf { display: none; }
+    .linie-gross { top: auto; bottom: 8px; transform: none; width: 125vw; left: -8vw; opacity: .7; }
+    .hero-video video, .hero-video img { object-position: 50% 100%; }
+    .hero-video::after { background: linear-gradient(180deg, rgba(16,19,21,.9) 0%, rgba(16,19,21,.72) 48%, rgba(16,19,21,.1) 72%, rgba(16,19,21,0) 100%); }
+    .ki-marke { bottom: 96px; }
+    .kacheln, .kacheln.zwei { grid-template-columns: 1fr; }
+    .kachel { min-height: 0; padding: 16px 52px 16px 16px; }
+    .schritt-bereich { min-height: 0; }
+    .formular { grid-template-columns: 1fr; }
+    .kontakt dl { grid-template-columns: 1fr; gap: 2px; }
+    .kontakt dd { margin-bottom: 14px; }
+    .fussleiste .rechts { margin-left: 0; }
+    .leiste {
+      display: grid; grid-template-columns: 1fr auto; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--nacht);
+    }
+    .leiste .knopf { min-height: 54px; }
+    .leiste .preis-knopf { color: var(--gruen-hell); border-color: #3A4144; padding: 0 18px; }
+    .leiste .preis-knopf[hidden] { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .zeichnen path { animation: none; stroke-dashoffset: 0; }
+    .schritt { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fahrzeuglinie aus dem Ademi-Logo (nachgezeichnet), einmal definiert -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="fahrzeuglinie">
+      <path pathLength="1" d="M318 210 C420 196 512 146 590 148 C644 150 684 174 706 198" stroke="#3FA85C" stroke-width="10"/>
+      <path pathLength="1" d="M497 184 C545 206 600 212 662 212 C738 212 800 206 852 226 C886 240 910 258 925 278" stroke="#8F9793" stroke-width="10"/>
+      <path pathLength="1" d="M535 245 C562 232 604 232 642 242 C692 255 742 262 796 262" stroke="#5CCB80" stroke-width="8"/>
+      <path pathLength="1" d="M275 312 C322 280 380 262 432 262 C502 262 560 270 596 252" stroke="#6B736F" stroke-width="8"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="kopf">
+  <div class="huelle">
+    <a class="logo" href="#" aria-label="Ademi Detailing – zum Seitenanfang"><img src="bilder/ademi-logo-hell.png" alt="Ademi Detailing" width="862" height="274"></a>
+    <nav aria-label="Hauptmenü">
+      <a href="#rechner">Preis berechnen</a>
+      <a href="#leasing">Leasing-Rückgabe</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="knopf gruen tel" href="tel:+4917661504130">0176 615 041 30</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-video" id="heroVideo" aria-hidden="true"></div>
+    <div class="huelle">
+      <div class="hero-text">
+      <h1><span class="ort">Fahrzeugaufbereitung in Reutlingen</span><span class="gross">zum Festpreis.</span></h1>
+      <p class="lead">Klicken Sie sich durch: Fahrzeug wählen, Leistungen aussuchen, Preis sehen. Was dazukommt, besprechen wir vorher mit Ihnen.</p>
+      <div class="aktionen">
+        <a class="knopf gruen" href="#rechner">Preis berechnen <span class="pfeil" aria-hidden="true">→</span></a>
+        <a class="anruf" href="tel:+4917661504130">0176 615 041 30</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rechner" id="rechner">
+    <div class="huelle">
+      <div class="kopfzeile">
+        <h2>Ihr Preis in wenigen Klicks</h2>
+        <p>Endpreise ohne Umsatzsteuer (§ 19 UStG). Die Anfrage kommt sofort bei uns an.</p>
+      </div>
+      <noscript><p><strong>Der Preis-Rechner braucht JavaScript.</strong> Rufen Sie uns einfach an: <a href="tel:+4917661504130">0176 615 041 30</a>.</p></noscript>
+
+      <form class="buehne" id="anfrageForm" action="anfrage.php" method="post" novalidate>
+        <div class="schritt-bereich">
+          <div class="fortschritt" id="fortschritt" aria-hidden="true"></div>
+          <p class="schrittzahl" id="schrittzahl"></p>
+
+          <div class="schritt" data-schritt="klasse">
+            <h3 class="frage">Welches Fahrzeug haben Sie?</h3>
+            <div class="kacheln" data-gruppe="Fahrzeugklasse"></div>
+          </div>
+          <div class="schritt" data-schritt="leistung">
+            <h3 class="frage">Was soll gemacht werden?</h3>
+            <div class="kacheln" data-gruppe="Leistung"></div>
+          </div>
+          <div class="schritt" data-schritt="innen">
+            <h3 class="frage">Wie sieht der Innenraum aus?</h3>
+            <div class="kacheln" data-gruppe="Innenreinigung"></div>
+            <p class="zusatz-titel">Noch etwas dazu? (mehrere möglich)</p>
+            <div class="kacheln zwei" data-gruppe="Innenraum-Zusatz"></div>
+          </div>
+          <div class="schritt" data-schritt="aussen">
+            <h3 class="frage">Was braucht der Lack?</h3>
+            <div class="kacheln zwei" data-gruppe="Außenpflege"></div>
+          </div>
+          <div class="schritt" data-schritt="versiegelung">
+            <h3 class="frage">Soll der Lack geschützt werden?</h3>
+            <div class="kacheln" data-gruppe="Versiegelung"></div>
+            <p class="zusatz-titel">Weitere Versiegelungen (mehrere möglich)</p>
+            <div class="kacheln" data-gruppe="Versiegelung-Zusatz"></div>
+          </div>
+          <div class="schritt" data-schritt="anfrage" id="anfrage">
+            <h3 class="frage">Wohin dürfen wir uns melden?</h3>
+            <div class="formular">
+              <label><span>Name <span class="pflicht">*</span></span><input name="name" autocomplete="name" required></label>
+              <label><span>Telefon <span class="pflicht">*</span></span><input name="telefon" type="tel" autocomplete="tel" required></label>
+              <label class="ganz">E-Mail<input name="email" type="email" autocomplete="email"></label>
+              <label class="ganz">Nachricht<textarea name="nachricht" placeholder="z. B. Modell, Baujahr, Wunschtermin"></textarea></label>
+              <input type="hidden" name="betreff" value="Preis-Rechner">
+              <input type="hidden" name="auswahl" value="">
+              <input type="hidden" name="festpreis" value="">
+              <input type="hidden" name="ts" value="">
+              <label class="falle" aria-hidden="true">Webseite<input name="webseite" tabindex="-1" autocomplete="off"></label>
+              <p class="meldung" role="status" hidden></p>
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button type="button" class="knopf zurueck" id="zurueck">← Zurück</button>
+            <button type="button" class="knopf gruen weiter" id="weiter">Weiter <span class="pfeil" aria-hidden="true">→</span></button>
+            <button type="submit" class="knopf gruen weiter" id="senden" hidden>Anfrage senden</button>
+          </div>
+        </div>
+
+        <aside class="preisseite" aria-live="polite">
+          <svg class="linie-klein" viewBox="260 130 680 200" aria-hidden="true"><use href="#fahrzeuglinie"/></svg>
+          <p class="titel">Ihr Festpreis</p>
+          <p class="fahrzeug" id="zFahrzeug">Noch kein Fahrzeug gewählt</p>
+          <ul id="zPosten"><li class="leer">Wählen Sie links Schritt für Schritt aus.</li></ul>
+          <div class="summe"><span>Gesamt</span><strong id="zSumme">0 €</strong></div>
+          <p class="hinweis">Endpreis, keine USt. nach § 19 UStG. Was dazukommt, klären wir vorher.</p>
+        </aside>
+      </form>
+
+      <ol class="ablauf">
+        <li><b>1</b><strong>Preis berechnen</strong><span>Hier im Rechner oder am Telefon.</span></li>
+        <li><b>2</b><strong>Anfrage senden</strong><span>Sie kommt sofort bei uns an. Wir melden uns mit einem Terminvorschlag.</span></li>
+        <li><b>3</b><strong>Termin in Reutlingen</strong><span>Passt alles zur Auswahl, bleibt es beim Preis. Was dazukommt, sagen wir vorher.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="leasing" id="leasing">
+    <div class="huelle">
+      <div>
+        <h2>Leasing&shy;rückgabe ohne Nachzahlung</h2>
+        <p>Bei der Abnahme wird genau geprüft. Kratzer im Lack, Flecken im Innenraum oder verkratzte Felgen gelten schnell als wertmindernd – und kosten Sie Geld.</p>
+        <p class="ehrlich">Wir sehen uns Ihr Fahrzeug vorher kostenlos an und sagen ehrlich, was sich lohnt und was nicht.</p>
+        <a class="knopf" href="#rechner" data-betreff="Leasing-Rückgabe">Kostenlose Begutachtung anfragen <span class="pfeil" aria-hidden="true">→</span></a>
+      </div>
+      <ul>
+        <li>Gründliche Innen- und Außenreinigung</li>
+        <li>Lackaufbereitung und Politur bei matten oder verkratzten Flächen</li>
+        <li>Gebrauchsspuren im Innenraum: Flecken, Gerüche, Tierhaare</li>
+        <li>Smart Repair bei kleinen Kratzern und Dellen</li>
+        <li>Felgen und Kunststoffteile</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sozial">
+    <div class="huelle">
+      <div>
+        <p>Vorher und nachher – unsere Arbeiten auf TikTok und Instagram:</p>
+        <a class="handle" href="https://www.tiktok.com/@ademi.detailing" rel="noopener"><span>@</span>ademi.detailing</a>
+      </div>
+      <div class="links">
+        <a class="knopf" href="https://www.tiktok.com/@ademi.detailing" rel="noopener">TikTok</a>
+        <a class="knopf" href="https://www.instagram.com/ademidetailing/" rel="noopener">Instagram</a>
+        <a class="knopf" href="https://www.facebook.com/detailing.ademi/" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt">
+    <div class="huelle">
+      <div>
+        <h2>Kontakt</h2>
+        <a class="gross" href="tel:+4917661504130">0176 615 041 30</a>
+      </div>
+      <dl>
+        <dt>Adresse</dt><dd>Ademi Detailing<br>Olgastraße 49<br>72770 Reutlingen</dd>
+        <dt>WhatsApp</dt><dd><a href="https://wa.me/4917661504130" rel="noopener">Nachricht schreiben</a></dd>
+        <dt>E-Mail</dt><dd><a href="mailto:info@ademidetailing.de">info@ademidetailing.de</a></dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fussleiste">
+  <div class="huelle">
+    <span>© Ademi Detailing, Reutlingen</span>
+    <a href="http://ademidetailing.de/IMPRESSUM/">Impressum</a>
+    <span class="fuss-ki" id="fussKi" hidden>Das mit „KI-Video“ markierte Video ist mit KI erstellt und zeigt keine Arbeit an einem Kundenfahrzeug.</span>
+    <span class="rechts">Webseite von <a href="https://sidetwo.de" rel="noopener">sideTwo</a></span>
+  </div>
+</footer>
+
+<div class="leiste">
+  <a class="knopf gruen" href="tel:+4917661504130">Anrufen</a>
+  <a class="knopf preis-knopf" href="#rechner" id="leistePreis" hidden>0 €</a>
+</div>
+
+<script>
+(() => {
+  // Preise aus dem alten Konfigurator (preise.json), Scheibenversiegelung entfernt (stand auf 0 €).
+  const KLASSEN = [
+    ["Kleinwagen", "z. B. Opel Corsa"], ["Kompaktwagen", "z. B. VW Golf"], ["Limousine/Coupe", "z. B. Mercedes C-Klasse"],
+    ["Kombi", "z. B. Audi A6 Avant"], ["SUV", "z. B. Range Rover"], ["Van/Kleinbus", "z. B. VW T5"]
+  ];
+  const ANZEIGE = { "Limousine/Coupe": "Limousine / Coupé", "Van/Kleinbus": "Van / Kleinbus" };
+  const P = (h,p1,p2,p3, l,n,s, pol,tier, wax,ker) => ({
+    "Außenpflege": { "Handwäsche": h, "1-Stufige Hochglanz Politur": p1, "2-Stufige Politur": p2, "3-Stufige Politur": p3 },
+    "Innenreinigung": { "Leicht": l, "Normal": n, "Stark": s },
+    "Innenraum-Zusatz": { "Leder Tiefenreinigung": 50, "Polsterflächen shampoonieren": pol, "Tierhaar entfernen": tier, "Geruchsneutralisierung": 99 },
+    "Versiegelung": { "WAX-Versiegelung": wax, "Keramik Versiegelung": ker },
+    "Versiegelung-Zusatz": { "Felgenversiegelung": 99, "Chrom Versiegelung": 50, "Cabrio Verdeck Versiegelung": 100, "Polster Versiegelung": 50, "Leder Versiegelung": 50 }
+  });
+  const PREISE = {
+    "Kleinwagen":      P(49,149,249,349,  49, 79, 99,  49, 99,  79,349),
+    "Kompaktwagen":    P(49,159,269,379,  69, 99,119,  49, 99,  79,349),
+    "Limousine/Coupe": P(69,199,299,399, 139,149,199,  99,149,  99,399),
+    "Kombi":           P(69,199,299,399, 139,149,199,  99,149,  99,399),
+    "SUV":             P(79,249,349,449, 159,179,239,  99,149,  99,449),
+    "Van/Kleinbus":    P(99,299,449,599, 199,249,299, 199,199, 199,599)
+  };
+  const TEXTE = {
+    "Komplettaufbereitung": "Innen und außen", "Innenraumaufbereitung": "Nur der Innenraum", "Lackaufbereitung": "Außen und Lack",
+    "Leicht": "Leichte Nutzungsspuren, wenig Schmutz", "Normal": "Alltagsverschmutzung, normale Nutzung", "Stark": "Starke Verschmutzung, hoher Aufwand",
+    "Leder Tiefenreinigung": "Schonend und gründlich", "Polsterflächen shampoonieren": "Shampoonieren und Extrahieren", "Tierhaar entfernen": "Aus Sitzen und Teppichen", "Geruchsneutralisierung": "Gerüche neutralisieren",
+    "Handwäsche": "Mit Waschhandschuh, gründliche Außenreinigung", "1-Stufige Hochglanz Politur": "Mehr Glanz, leichte Defekte reduzieren", "2-Stufige Politur": "Stärkere Defektkorrektur und Hochglanz", "3-Stufige Politur": "Starke Defekte, maximaler Glanz – Voraussetzung für Keramik",
+    "Keine": "Ohne Versiegelung weiter", "WAX-Versiegelung": "Schutz und Glanz, immer möglich", "Keramik Versiegelung": "Langer Schutz für den Lack.",
+    "Felgenversiegelung": "Leichtere Reinigung der Felgen", "Chrom Versiegelung": "Chrom- und Zierleisten", "Cabrio Verdeck Versiegelung": "Imprägnierung fürs Verdeck", "Polster Versiegelung": "Gegen Flecken und Feuchtigkeit", "Leder Versiegelung": "Schutz und Pflege fürs Leder"
+  };
+  const NAMEN = { "1-Stufige Hochglanz Politur": "Politur 1-stufig", "2-Stufige Politur": "Politur 2-stufig", "3-Stufige Politur": "Politur 3-stufig",
+    "Keramik Versiegelung": "Keramik-Versiegelung", "Chrom Versiegelung": "Chrom-Versiegelung", "Cabrio Verdeck Versiegelung": "Cabrio-Verdeck",
+    "Polster Versiegelung": "Polster-Versiegelung", "Leder Versiegelung": "Leder-Versiegelung", "Leicht": "Leicht", "Normal": "Normal", "Stark": "Stark",
+    "Keine": "Keine Versiegelung" };
+  const BELEG = { "Leicht": "Innenreinigung leicht", "Normal": "Innenreinigung normal", "Stark": "Innenreinigung stark" };
+  const eur = n => n.toLocaleString("de-DE") + " €";
+  const name = k => NAMEN[k] || ANZEIGE[k] || k;
+
+  const form = document.getElementById("anfrageForm");
+  const kachel = (gruppe, wert, typ, info) =>
+    `<label class="kachel"><input type="${typ}" name="${typ === "radio" ? "g_" + gruppe : "c_" + wert}" value="${wert}" data-gruppe="${gruppe}">` +
+    `<span class="haken" aria-hidden="true"></span><span class="name">${name(wert)}</span>` +
+    `<span class="info">${info ?? TEXTE[wert] ?? ""}</span><span class="betrag" data-betrag="${gruppe}|${wert}"></span></label>`;
+  const fuelle = (gruppe, werte, typ) => { document.querySelector(`[data-gruppe="${gruppe}"]`).innerHTML = werte.map(w => kachel(gruppe, w, typ)).join(""); };
+  document.querySelector('[data-gruppe="Fahrzeugklasse"]').innerHTML = KLASSEN.map(([k, b]) => kachel("Fahrzeugklasse", k, "radio", b)).join("");
+  const bsp = PREISE.Kleinwagen;
+  fuelle("Leistung", ["Komplettaufbereitung", "Innenraumaufbereitung", "Lackaufbereitung"], "radio");
+  fuelle("Innenreinigung", Object.keys(bsp.Innenreinigung), "radio");
+  fuelle("Innenraum-Zusatz", Object.keys(bsp["Innenraum-Zusatz"]), "checkbox");
+  fuelle("Außenpflege", Object.keys(bsp["Außenpflege"]), "radio");
+  fuelle("Versiegelung", ["Keine", ...Object.keys(bsp.Versiegelung)], "radio");
+  fuelle("Versiegelung-Zusatz", Object.keys(bsp["Versiegelung-Zusatz"]), "checkbox");
+
+  const wert = g => form.querySelector(`input[data-gruppe="${g}"][type=radio]:checked`)?.value || null;
+  const preis = (g, w) => { const k = wert("Fahrzeugklasse"); return (k && PREISE[k][g] && PREISE[k][g][w] != null) ? PREISE[k][g][w] : null; };
+
+  // Welche Schritte gibt es bei der aktuellen Auswahl?
+  const schritte = () => {
+    const l = wert("Leistung");
+    const s = ["klasse", "leistung"];
+    if (l === "Innenraumaufbereitung" || l === "Komplettaufbereitung") s.push("innen");
+    if (l === "Lackaufbereitung" || l === "Komplettaufbereitung") s.push("aussen");
+    s.push("versiegelung", "anfrage");
+    return s;
+  };
+  const pflicht = { klasse: () => wert("Fahrzeugklasse"), leistung: () => wert("Leistung"), innen: () => wert("Innenreinigung"), aussen: () => wert("Außenpflege"), versiegelung: () => wert("Versiegelung") };
+  let aktuell = "klasse";
+
+  function zeigeSchritt(id, fokus) {
+    aktuell = id;
+    const liste = schritte(), i = liste.indexOf(id);
+    document.querySelectorAll(".schritt").forEach(s => s.classList.toggle("aktiv", s.dataset.schritt === id));
+    document.getElementById("fortschritt").innerHTML = liste.map((_, j) => `<span class="${j < i ? "fertig" : j === i ? "jetzt" : ""}"></span>`).join("");
+    document.getElementById("schrittzahl").textContent = `Schritt ${i + 1} von ${liste.length}`;
+    document.getElementById("zurueck").hidden = i === 0;
+    document.getElementById("weiter").hidden = id === "anfrage";
+    document.getElementById("senden").hidden = id !== "anfrage";
+    document.getElementById("weiter").disabled = !!pflicht[id] && !pflicht[id]();
+    if (fokus) {
+      const ziel = document.querySelector(`.schritt[data-schritt="${id}"] input, .schritt[data-schritt="${id}"] .frage`);
+      form.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      ziel?.focus({ preventScroll: true });
+    }
+  }
+  const naechster = () => { const l = schritte(); return l[l.indexOf(aktuell) + 1]; };
+  const vorheriger = () => { const l = schritte(); return l[l.indexOf(aktuell) - 1]; };
+  document.getElementById("weiter").addEventListener("click", () => { if (!pflicht[aktuell] || pflicht[aktuell]()) zeigeSchritt(naechster(), true); });
+  document.getElementById("zurueck").addEventListener("click", () => zeigeSchritt(vorheriger(), true));
+
+  function aktualisieren() {
+    const klasse = wert("Fahrzeugklasse"), leistung = wert("Leistung");
+    const innen = leistung === "Innenraumaufbereitung" || leistung === "Komplettaufbereitung";
+    const aussen = leistung === "Lackaufbereitung" || leistung === "Komplettaufbereitung";
+
+    const keramik = form.querySelector('input[value="Keramik Versiegelung"]');
+    const erlaubt = aussen && wert("Außenpflege") === "3-Stufige Politur";
+    keramik.disabled = !erlaubt;
+    keramik.closest(".kachel").classList.toggle("aus", !erlaubt);
+    if (!erlaubt && keramik.checked) keramik.checked = false;
+
+    form.querySelectorAll("[data-betrag]").forEach(el => {
+      const [g, w] = el.dataset.betrag.split("|"); const p = preis(g, w);
+      el.textContent = (p == null || g === "Fahrzeugklasse" || g === "Leistung") ? "" : (g.endsWith("Zusatz") ? "+ " : "") + eur(p);
+    });
+
+    const zeilen = []; let summe = 0;
+    const add = (g, w) => { const p = preis(g, w); if (p == null) return; zeilen.push([BELEG[w] || name(w), p]); summe += p; };
+    if (klasse && leistung) {
+      if (innen && wert("Innenreinigung")) add("Innenreinigung", wert("Innenreinigung"));
+      if (innen) form.querySelectorAll('input[data-gruppe="Innenraum-Zusatz"]:checked').forEach(i => add("Innenraum-Zusatz", i.value));
+      if (aussen && wert("Außenpflege")) add("Außenpflege", wert("Außenpflege"));
+      const v = wert("Versiegelung"); if (v && v !== "Keine") add("Versiegelung", v);
+      form.querySelectorAll('input[data-gruppe="Versiegelung-Zusatz"]:checked').forEach(i => add("Versiegelung-Zusatz", i.value));
+    }
+    document.getElementById("zFahrzeug").textContent = klasse ? `${name(klasse)}${leistung ? " · " + leistung : ""}` : "Noch kein Fahrzeug gewählt";
+    document.getElementById("zPosten").innerHTML = zeilen.length
+      ? zeilen.map(([t, p]) => `<li><span>${t}</span><span>${eur(p)}</span></li>`).join("")
+      : `<li class="leer">Wählen Sie links Schritt für Schritt aus.</li>`;
+    document.getElementById("zSumme").textContent = eur(summe);
+    const leiste = document.getElementById("leistePreis");
+    leiste.hidden = !zeilen.length; leiste.textContent = eur(summe);
+    form.auswahl.value = zeilen.length ? `${name(klasse)} · ${leistung}: ` + zeilen.map(([t, p]) => `${t} ${eur(p)}`).join(" | ") : "";
+    form.festpreis.value = zeilen.length ? eur(summe) : "";
+    zeigeSchritt(aktuell, false);
+  }
+
+  // Einfachauswahl führt automatisch weiter, Mehrfachauswahl nicht
+  form.addEventListener("change", e => {
+    aktualisieren();
+    const g = e.target.dataset.gruppe;
+    const auto = { "Fahrzeugklasse": "klasse", "Leistung": "leistung", "Außenpflege": "aussen" };
+    if (e.target.type === "radio" && auto[g] === aktuell) setTimeout(() => zeigeSchritt(naechster(), true), 260);
+  });
+  aktualisieren();
+  zeigeSchritt("klasse", false);
+  form.ts.value = Math.floor(Date.now() / 1000);
+
+  document.querySelectorAll("[data-betreff]").forEach(a => a.addEventListener("click", () => {
+    form.betreff.value = a.dataset.betreff;
+    form.nachricht.placeholder = "z. B. Modell, Rückgabetermin, was Ihnen aufgefallen ist";
+    setTimeout(() => zeigeSchritt("anfrage", true), 50);
+  }));
+
+  // Hero-Hintergrundvideo: erscheint erst, wenn es wirklich läuft. Fehlt die Datei, bleibt der Hero ohne Video.
+  // Handy: erst Hochformat, sonst Querformat. Weniger Bewegung / Datensparen → nur Standbild.
+  (() => {
+    const box = document.getElementById("heroVideo");
+    const ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.connection?.saveData;
+    const reihe = (matchMedia("(max-width: 720px)").matches ? ["hoch", "quer"] : ["quer"]).map(f => "bilder/hero-politur-" + f);
+    const marke = '<span class="ki-marke">KI-Video</span>';
+    const fertig = () => { box.classList.add("da"); box.closest(".hero").classList.add("mit-video"); document.getElementById("fussKi").hidden = false; };
+    const versuche = i => {
+      if (i >= reihe.length) { box.innerHTML = ""; return; }
+      const basis = reihe[i];
+      if (ruhig) {
+        box.innerHTML = `<img src="${basis}.jpg" alt="">${marke}`;
+        const img = box.querySelector("img");
+        img.addEventListener("load", fertig, { once: true });
+        img.addEventListener("error", () => versuche(i + 1), { once: true });
+        return;
+      }
+      box.innerHTML = `<video muted loop playsinline autoplay preload="auto" poster="${basis}.jpg" src="${basis}.mp4"></video>${marke}`;
+      const v = box.querySelector("video");
+      v.muted = true;
+      v.addEventListener("playing", fertig, { once: true });
+      v.addEventListener("error", () => versuche(i + 1), { once: true });
+      v.play().catch(() => {});
+      // Hero außer Sicht → anhalten
+      new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }).observe(box);
+    };
+    versuche(0);
+  })();
+
+  const meldung = form.querySelector(".meldung");
+  const zeige = (ok, text) => { meldung.hidden = false; meldung.className = "meldung " + (ok ? "ok" : "fehler"); meldung.textContent = text; };
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (aktuell !== "anfrage") return;
+    if (!form.name.value.trim() || !form.telefon.value.trim()) { zeige(false, "Bitte geben Sie Name und Telefonnummer an."); (form.name.value.trim() ? form.telefon : form.name).focus(); return; }
+    const knopf = document.getElementById("senden"); knopf.disabled = true;
+    try {
+      const r = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { "X-Requested-With": "fetch" } });
+      const d = await r.json();
+      zeige(d.ok, d.text);
+      if (d.ok) form.querySelectorAll(".formular input:not([type=hidden]), .formular textarea").forEach(f => f.value = "");
+      else knopf.disabled = false;
+    } catch {
+      zeige(false, "Das hat gerade nicht geklappt. Bitte rufen Sie uns an: 0176 615 041 30.");
+      knopf.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
